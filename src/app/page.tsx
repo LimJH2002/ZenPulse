@@ -1,10 +1,7 @@
 // pages/index.js
 export default function Home() {
   return (
-    <div
-      className="bg-cover bg-center h-screen"
-      style={{ backgroundImage: "url(/your-background.jpg)" }}
-    >
+    <main className="bg-cover bg-center h-screen">
       <div className="flex flex-col items-center justify-center h-full">
         <div className="text-white text-center">
           <p className="text-xl">
@@ -17,6 +14,6 @@ export default function Home() {
         </div>
       </div>
       {/* Add your music player and other components */}
-    </div>
+    </main>
   );
 }
