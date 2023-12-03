@@ -3,34 +3,30 @@
 import { useEffect, useState } from "react";
 import styles from "./Clock.module.css";
 
+const formatTime = () => {
+  const now = new Date();
+  let hour = now.getHours();
+  const minute = now.getMinutes();
+
+  // Convert 24-hour format to 00:xx after midnight
+  hour = hour === 24 ? 0 : hour;
+
+  // Format hour and minute to always be 2 digits
+  const formattedHour = hour.toString().padStart(2, "0");
+  const formattedMinute = minute.toString().padStart(2, "0");
+
+  return `${formattedHour}:${formattedMinute}`;
+};
+
 const Clock = () => {
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    })
-  );
-  const [loaded, setLoaded] = useState(false);
+  const [currentTime, setCurrentTime] = useState(formatTime());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(
-        new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false,
-        })
-      );
+      setCurrentTime(formatTime());
     }, 1000);
 
-    // Delay setting the loaded state to trigger the fade-in effect
-    const loadTimer = setTimeout(() => setLoaded(true), 100);
-
-    return () => {
-      clearInterval(timer);
-      clearTimeout(loadTimer);
-    };
+    return () => clearInterval(timer);
   }, []);
 
   return (
