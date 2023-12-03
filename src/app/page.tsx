@@ -7,7 +7,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-black bg-opacity-30" />
 
       {/* Content */}
-      <div className="flex flex-col items-center justify-center h-full">
+      <div className="flex flex-col items-center justify-center h-full relative z-10">
         <div className="text-white text-center">
           <p className="text-2xl">
             Embrace the weekend, Jian Hong. You aced Friday.
