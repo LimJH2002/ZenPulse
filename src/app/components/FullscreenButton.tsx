@@ -15,7 +15,7 @@ const FullscreenButton = () => {
   };
 
   return (
-    <div className="absolute bottom-10 right-20 text-white text-2xl cursor-pointer hover:text-indigo-500">
+    <div className="text-white text-2xl cursor-pointer hover:text-indigo-500">
       <FontAwesomeIcon icon={faExpand} onClick={toggleFullScreen} />
     </div>
   );

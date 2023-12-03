@@ -1,5 +1,5 @@
 import Clock from "./components/Clock/Clock";
-import FullscreenButton from "./components/FullscreenButton";
+import BottomNav from "./components/BottomNav";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
           <p>Keep taking time for yourself until you&apos;re you again</p>
         </div>
 
-        <FullscreenButton />
+        <BottomNav />
       </div>
     </main>
   );
