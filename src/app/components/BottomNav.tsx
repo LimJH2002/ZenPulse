@@ -1,7 +1,6 @@
-import React from 'react'
-import FullscreenButton from './FullscreenButton';
-import SettingsButton from './SettingsButton';
-import ModeMenu from './ModeMenu/ModeMenu';
+import FullscreenButton from "./FullscreenButton";
+import ModeMenu from "./ModeMenu/ModeMenu";
+import SettingsButton from "./SettingsButton";
 
 function BottomNav() {
   return (
@@ -18,4 +17,4 @@ function BottomNav() {
   );
 }
 
-export default BottomNav
+export default BottomNav;
