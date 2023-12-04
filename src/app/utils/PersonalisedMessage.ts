@@ -1,7 +1,9 @@
 function getDailyMessage(username: string, currentTime: string): string {
-
   const hour = parseInt(currentTime.substring(0, 2), 10);
-  const dayOfWeek = new Date().getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
+  let dayOfWeek = new Date().getDay() - 1;
+  if (dayOfWeek < 0) {
+    dayOfWeek = 6;
+  }
 
   const morningMessages = [
     "Rise and shine, [Username]! A new week awaits. Happy Monday!",
@@ -44,7 +46,7 @@ function getDailyMessage(username: string, currentTime: string): string {
   ];
 
   let message;
-  
+
   if (hour >= 4 && hour < 12) {
     message = morningMessages[dayOfWeek];
   } else if (hour >= 12 && hour < 16) {
@@ -52,7 +54,7 @@ function getDailyMessage(username: string, currentTime: string): string {
   } else if (hour >= 16 && hour < 20) {
     message = eveningMessages[dayOfWeek];
   } else {
-    message = nightMessages[(dayOfWeek + 1) % 7]; // Next day's message for night time
+    message = nightMessages[(dayOfWeek + (hour < 4 ? 1 : 0)) % 7];
   }
 
   return message.replace("[Username]", username);
