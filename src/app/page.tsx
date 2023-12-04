@@ -1,17 +1,15 @@
 "use client";
-import OnboardingModal from "@/components/OnboardingModal";
 import PersonalizedMessages from "@/components/PersonalizedMessages";
-import { useEffect, useState } from "react";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 import BottomNav from "../components/BottomNav/BottomNav";
 import Clock from "../components/Clock/Clock";
 
 export default function Home() {
-  const [showModal, setShowModal] = useState(false);
-
   useEffect(() => {
     const passedOnboarding = localStorage.getItem("passedOnboarding");
     if (passedOnboarding !== "true") {
-      setShowModal(true);
+      redirect("/intro");
     }
   }, []);
 
@@ -31,9 +29,6 @@ export default function Home() {
 
         <BottomNav />
       </div>
-
-      {/* Modal */}
-      {showModal && <OnboardingModal />}
     </main>
   );
 }
