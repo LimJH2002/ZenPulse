@@ -1,13 +1,25 @@
 "use client";
 import { STAGGER_CHILD_VARIANTS } from "@/app/utils/constants";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 export default function Intro() {
   const [showInput, setShowInput] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const handleGetStartedClick = () => {
     setShowInput(true);
+  };
+
+  const handleInputChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setInputValue(event.target.value); // Update state with input value
+  };
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault(); // Prevent default form submission
+    console.log(inputValue); // Print the input value
   };
 
   const inputVariants = {
@@ -69,25 +81,32 @@ export default function Intro() {
 
         <AnimatePresence>
           {showInput && (
-            <motion.div
+            <motion.form
+              onSubmit={handleSubmit} // Attach the handleSubmit function here
               className="flex flex-col items-center space-y-4 absolute"
               variants={inputVariants}
               initial="hidden"
               animate="visible"
-              exit={{ ...inputVariants.exit, transition: slowerTransition }} // Using slower transition for exit
+              exit={{ ...inputVariants.exit, transition: slowerTransition }}
             >
               <p className="text-lg text-foreground">
-                How would you like to be called?
+                But first, how would you like to be called?
               </p>
               <input
                 type="text"
                 placeholder="Enter your preferred name"
-                className="rounded px-4 py-2 border border-gray-300"
+                required
+                className="rounded w-full px-4 py-2 border border-gray-300 text-black"
+                value={inputValue}
+                onChange={handleInputChange}
               />
-              <button className="rounded bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4">
+              <button
+                className="rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+                type="submit"
+              >
                 Submit
               </button>
-            </motion.div>
+            </motion.form>
           )}
         </AnimatePresence>
       </motion.div>
