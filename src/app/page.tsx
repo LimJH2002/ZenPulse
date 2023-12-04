@@ -1,8 +1,20 @@
+"use client";
+import OnboardingModal from "@/components/OnboardingModal";
+import PersonalizedMessages from "@/components/PersonalizedMessages";
+import { useEffect, useState } from "react";
 import BottomNav from "../components/BottomNav/BottomNav";
 import Clock from "../components/Clock/Clock";
-import PersonalizedMessages from "@/components/PersonalizedMessages";
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const passedOnboarding = localStorage.getItem("passedOnboarding");
+    if (passedOnboarding !== "true") {
+      setShowModal(true);
+    }
+  }, []);
+
   return (
     <main className="bg-main-bg bg-center bg-cover h-screen w-screen bg-black overflow-hidden">
       {/* Overlay */}
@@ -19,6 +31,9 @@ export default function Home() {
 
         <BottomNav />
       </div>
+
+      {/* Modal */}
+      {showModal && <OnboardingModal />}
     </main>
   );
 }
