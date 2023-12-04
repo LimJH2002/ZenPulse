@@ -30,7 +30,7 @@ function BottomNav() {
       </div>
     </div>
   ) : (
-    <div></div> // Alternatively, you can render a loader or placeholder here
+    <div></div>
   );
 }
 
