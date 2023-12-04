@@ -12,7 +12,10 @@ function BottomNav() {
       <SettingsButton />
 
       {/* Fullscreen Button */}
-      <FullscreenButton />
+      {/* Only show when on screens md and above */}
+      <div className="hidden md:block">
+        <FullscreenButton />
+      </div>
     </div>
   );
 }

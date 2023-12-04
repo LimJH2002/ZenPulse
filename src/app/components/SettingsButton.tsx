@@ -13,7 +13,7 @@ function SettingsButton() {
   };
 
   return (
-    <div className="text-white text-2xl cursor-pointer mr-6 hover:text-indigo-500">
+    <div className="text-white text-2xl cursor-pointer md:mr-6 hover:text-indigo-500">
       <FontAwesomeIcon icon={faCog} onClick={handleSettingsClick} />
       <SettingsOverlay open={open} setOpen={setOpen} />
     </div>
