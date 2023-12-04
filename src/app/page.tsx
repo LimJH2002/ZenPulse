@@ -1,5 +1,5 @@
+import BottomNav from "./components/BottomNav/BottomNav";
 import Clock from "./components/Clock/Clock";
-import BottomNav from "./components/BottomNav";
 
 export default function Home() {
   return (
