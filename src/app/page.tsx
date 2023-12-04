@@ -15,9 +15,6 @@ export default function Home() {
           </p>
           <Clock />
         </div>
-        <div className="absolute bottom-0 mb-10 text-white">
-          <p>Keep taking time for yourself until you&apos;re you again</p>
-        </div>
 
         <BottomNav />
       </div>

@@ -4,7 +4,7 @@ import SettingsButton from "./SettingsButton";
 
 function BottomNav() {
   return (
-    <div className="absolute bottom-12 right-12 flex items-center">
+    <div className="absolute md:bottom-12 md:right-12 flex items-center bottom-10">
       {/* Mode Menu */}
       <ModeMenu />
 
