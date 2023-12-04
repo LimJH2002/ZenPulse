@@ -11,21 +11,25 @@ export default function Intro() {
   };
 
   const inputVariants = {
-    hidden: { x: 200, opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-    exit: { x: 200, opacity: 0 },
+    hidden: { x: 800, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { delay: 1, duration: 2 } },
+    exit: { x: -800, opacity: 0 },
   };
+
+  // Adjusted for slower animation
+  const slowerTransition = { duration: 2 };
 
   return (
     <motion.div
       className="flex items-center justify-center min-h-screen z-10"
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 1, type: "spring" }}
+      transition={slowerTransition} // Using slower transition
     >
       <motion.div
         variants={{
           show: {
             transition: {
+              ...slowerTransition, // Using slower transition
               staggerChildren: 0.5,
             },
           },
@@ -35,7 +39,7 @@ export default function Intro() {
         className="mx-5 flex flex-col items-center space-y-10 text-center sm:mx-auto"
       >
         <motion.h1
-          className="font-display text-4xl font-bold text-foreground transition-colors sm:text-5xl"
+          className="font-display text-4xl font-bold text-foreground transition-colors sm:text-5xl relative bottom-10"
           variants={STAGGER_CHILD_VARIANTS}
         >
           Welcome to{" "}
@@ -44,26 +48,21 @@ export default function Intro() {
 
         <AnimatePresence>
           {!showInput && (
-            <motion.div>
-              <motion.p
-                className="max-w-md text-accent-foreground/80 transition-colors sm:text-lg"
-                variants={STAGGER_CHILD_VARIANTS}
-                exit={{ x: -200, opacity: 0 }}
-              >
+            <motion.div
+              variants={STAGGER_CHILD_VARIANTS}
+              exit={{ x: -800, opacity: 0, transition: slowerTransition }} // Using slower transition for exit
+              className="absolute"
+            >
+              <motion.p className="max-w-md text-accent-foreground/80 transition-colors sm:text-lg">
                 ZenPulse is a platform that lets you put your unused screens to
                 use and also helps you to relax.
               </motion.p>
-              <motion.div
-                variants={STAGGER_CHILD_VARIANTS}
-                exit={{ x: -200, opacity: 0 }}
+              <button
+                onClick={handleGetStartedClick}
+                className="rounded bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4"
               >
-                <button
-                  onClick={handleGetStartedClick}
-                  className="rounded bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4"
-                >
-                  Let's Get Started
-                </button>
-              </motion.div>
+                Let's Get Started
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -71,11 +70,11 @@ export default function Intro() {
         <AnimatePresence>
           {showInput && (
             <motion.div
-              className="flex flex-col items-center space-y-4"
+              className="flex flex-col items-center space-y-4 absolute"
               variants={inputVariants}
               initial="hidden"
               animate="visible"
-              exit="exit"
+              exit={{ ...inputVariants.exit, transition: slowerTransition }} // Using slower transition for exit
             >
               <p className="text-lg text-foreground">
                 How would you like to be called?
