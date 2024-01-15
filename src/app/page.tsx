@@ -11,7 +11,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center h-full relative z-10">
         <div className="text-white text-center">
           <p className="text-3xl">
-            Embrace the weekend, Jian Hong. You aced Friday.
+            Embrace the weekend, Ee Zhen. You aced Friday.
           </p>
           <Clock />
         </div>
