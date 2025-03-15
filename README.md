@@ -1,24 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ZenPulse
+
+ZenPulse is a minimalist productivity and wellness application built with Next.js, designed to help you maintain focus and balance in your daily life.
+
+## Features
+
+### 🏠 Home
+
+- Beautiful, minimalist interface with a dynamic clock
+- Inspirational messages to keep you motivated
+- Clean, distraction-free design
+
+### ⏱️ Focus Timer
+
+- Simple and elegant stopwatch functionality
+- Start, pause, and reset capabilities
+- Clean interface to maintain concentration
+- Minimalist design for distraction-free focus sessions
+
+### 🎵 Music (Coming Soon)
+
+- Curated playlists for different moods and activities
+- Seamless audio playback integration
+- Music controls designed for minimal distraction
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Icons**: Font Awesome
+- **Animations**: CSS Modules
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/zenpulse.git
+cd zenpulse
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+src/
+├── app/
+│   ├── components/     # Reusable components
+│   ├── focus/         # Focus timer page
+│   ├── music/         # Music player page (coming soon)
+│   └── page.tsx       # Home page
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Learn More
 
