@@ -31,7 +31,7 @@ const Clock = () => {
 
   return (
     <span className={styles.fadeInAnimation}>
-      <p className="text-[12rem] -m-[3rem] font-bold">{currentTime}</p>
+      <p className="text-[6rem] sm:text-[12rem] -m-[3rem] font-bold">{currentTime}</p>
     </span>
   );
 };
