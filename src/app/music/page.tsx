@@ -1,7 +1,6 @@
-import BottomNav from "./components/BottomNav";
-import Clock from "./components/Clock/Clock";
+import BottomNav from "../components/BottomNav";
 
-export default function Home() {
+export default function Music() {
   return (
     <main className="bg-main-bg bg-cover bg-center h-screen bg-black">
       {/* Overlay */}
@@ -10,13 +9,11 @@ export default function Home() {
       {/* Content */}
       <div className="flex flex-col items-center justify-center h-full relative z-10">
         <div className="text-white text-center">
-          <p className="text-3xl">
-            Embrace the weekend, Ee Zhen. You aced Friday.
-          </p>
-          <Clock />
+          <p className="text-3xl mb-8">Music</p>
+          {/* Music content will go here */}
         </div>
         <div className="absolute bottom-0 mb-10 text-white">
-          <p>Keep taking time for yourself until you&apos;re you again</p>
+          <p>Let the music guide you</p>
         </div>
 
         <BottomNav />

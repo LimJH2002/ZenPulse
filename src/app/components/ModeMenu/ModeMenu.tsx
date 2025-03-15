@@ -1,12 +1,24 @@
 "use client";
-import { faMessage, faMusic } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouse,
+  faMusic,
+  faStopwatch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./ModeMenu.module.css";
 
 function ModeMenu() {
-  const [selectedIcon, setSelectedIcon] = useState(1);
-   const iconWidthRem = 2.3;
+  const router = useRouter();
+  const pathname = usePathname();
+  const iconWidthRem = 2.3;
+
+  // Determine selected icon based on current path
+  let selectedIcon = 2; // Default to home
+  if (pathname === "/") selectedIcon = 2;
+  else if (pathname === "/music") selectedIcon = 1;
+  else if (pathname === "/focus") selectedIcon = 3;
+
   const sliderOffset = (selectedIcon - 1) * iconWidthRem;
 
   return (
@@ -20,23 +32,25 @@ function ModeMenu() {
         icon={faMusic}
         className={`text-white text-xl cursor-pointer hover:text-gray-300 pl-2 py-2 z-10`}
         onClick={() => {
-          setSelectedIcon(1);
+          router.push("/music");
         }}
       />
 
+      {/* Home Icon */}
       <FontAwesomeIcon
-        icon={faMessage}
+        icon={faHouse}
         className={`text-white text-xl cursor-pointer hover:text-gray-300 px-4 py-2 z-10`}
         onClick={() => {
-          setSelectedIcon(2);
+          router.push("/");
         }}
       />
 
+      {/* Focus Icon */}
       <FontAwesomeIcon
-        icon={faMessage}
+        icon={faStopwatch}
         className={`text-white text-xl cursor-pointer hover:text-gray-300 pr-2 py-2 z-10`}
         onClick={() => {
-          setSelectedIcon(3);
+          router.push("/focus");
         }}
       />
     </div>
