@@ -5,7 +5,12 @@ import ModeMenu from "../ModeMenu/ModeMenu";
 import SettingsButton from "../SettingsButton";
 import styles from "./BottomNav.module.css";
 
-function BottomNav() {
+interface BottomNavProps {
+  selectedMode: number;
+  onModeChange: (mode: number) => void;
+}
+
+function BottomNav({ selectedMode, onModeChange }: BottomNavProps) {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   useEffect(() => {
@@ -19,7 +24,7 @@ function BottomNav() {
       className={`${styles.fadeIn} absolute flex items-center bottom-10 lg:bottom-12 lg:right-12`}
     >
       {/* Mode Menu */}
-      <ModeMenu />
+      <ModeMenu selectedMode={selectedMode} onModeChange={onModeChange} />
 
       {/* Settings Button */}
       <SettingsButton />

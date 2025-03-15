@@ -1,22 +1,20 @@
 "use client";
 
-import { useUserPreferences } from "@/hooks/useUserPreferences";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import styles from "./page.module.css";
+import styles from "./Onboarding.module.css";
 
-export default function Intro() {
-  const router = useRouter();
-  const { completeOnboarding } = useUserPreferences();
+interface OnboardingProps {
+  onComplete: (name: string) => void;
+}
+
+const Onboarding = ({ onComplete }: OnboardingProps) => {
   const [name, setName] = useState("");
   const [step, setStep] = useState(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
-      completeOnboarding(name.trim());
-      localStorage.setItem("passedOnboarding", "true");
-      router.push("/");
+      onComplete(name.trim());
     }
   };
 
@@ -64,19 +62,15 @@ export default function Intro() {
   ];
 
   return (
-    <main className="bg-main-bg bg-cover bg-center h-screen bg-black">
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-30" />
-
-      {/* Content */}
-      <div
-        className={`flex items-center justify-center h-full relative z-10 ${styles.fadeIn}`}
-      >
-        <div className="text-white text-center space-y-8">
-          <h1 className="text-4xl font-bold mb-8">{steps[step].title}</h1>
-          {steps[step].content}
-        </div>
+    <div
+      className={`fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center ${styles.fadeIn}`}
+    >
+      <div className="text-white text-center space-y-8">
+        <h1 className="text-4xl font-bold mb-8">{steps[step].title}</h1>
+        {steps[step].content}
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default Onboarding;
