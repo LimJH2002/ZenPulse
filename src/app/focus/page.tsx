@@ -1,7 +1,11 @@
-import BottomNav from "../components/BottomNav";
-import Stopwatch from "../components/Stopwatch/Stopwatch";
+"use client";
+import { useState } from "react";
+import BottomNav from "../../components/BottomNav/BottomNav";
+import Stopwatch from "../../components/Stopwatch/Stopwatch";
 
 export default function Focus() {
+  const [selectedMode, setSelectedMode] = useState<number>(3);
+
   return (
     <main className="bg-main-bg bg-cover bg-center h-screen bg-black">
       {/* Overlay */}
@@ -17,7 +21,7 @@ export default function Focus() {
           <p>Stay focused, stay present</p>
         </div>
 
-        <BottomNav />
+        <BottomNav onModeChange={setSelectedMode} selectedMode={selectedMode} />
       </div>
     </main>
   );

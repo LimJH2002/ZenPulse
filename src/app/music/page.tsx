@@ -1,6 +1,10 @@
-import BottomNav from "../components/BottomNav";
+"use client";
+import { useState } from "react";
+import BottomNav from "../../components/BottomNav/BottomNav";
 
 export default function Music() {
+  const [selectedMode, setSelectedMode] = useState<number>(1);
+
   return (
     <main className="bg-main-bg bg-cover bg-center h-screen bg-black">
       {/* Overlay */}
@@ -16,7 +20,7 @@ export default function Music() {
           <p>Let the music guide you</p>
         </div>
 
-        <BottomNav />
+        <BottomNav onModeChange={setSelectedMode} selectedMode={selectedMode} />
       </div>
     </main>
   );
